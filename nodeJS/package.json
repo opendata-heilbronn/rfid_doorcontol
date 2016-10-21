@@ -1,0 +1,30 @@
+{
+  "name": "rfid_doorcontrol",
+  "version": "0.0.1",
+  "description": "CoWo RFID Door Control",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opendata-heilbronn/rfid_doorcontol.git"
+  },
+  "keywords": [
+    "rfid",
+    "nfc",
+    "mifare",
+    "raspberrypi"
+  ],
+  "author": "Simon + Leandro",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/opendata-heilbronn/rfid_doorcontol/issues"
+  },
+  "homepage": "https://github.com/opendata-heilbronn/rfid_doorcontol#readme",
+  "dependencies": {
+    "nodeacr122u": "^1.0.0",
+    "rpi-gpio": "^0.7.0",
+    "sqlite3": "^3.1.6"
+  }
+}
