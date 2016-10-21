@@ -9,7 +9,12 @@ function open(path)
 
 function init()
 {
-  db.run("CREATE TABLE IF NOT EXISTS 'access' ('cardID'	TEXT UNIQUE,	'name'	TEXT, 'accessStatus'	INTEGER,	PRIMARY KEY(cardID));");
+  db.run(`CREATE TABLE IF NOT EXISTS 'access' (
+    'cardID'	TEXT UNIQUE,
+    'name'	TEXT,
+    'accessStatus'	INTEGER,
+    PRIMARY KEY(cardID)
+  );`);
 }
 
 function close()
