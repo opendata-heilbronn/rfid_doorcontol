@@ -22,6 +22,8 @@ var disableGPIO = 1; //disable all gpio calls (for developing purposes)
 
 //------------ DB init ------------//
 db.open(dbPath);
+
+//db.logAccess("asdf", 1);
 /*db.createAccess("asdf"); //Temporary test code, remove before prod
 db.getAccessStatus("asdf", function(status){
   console.log(status);
@@ -48,6 +50,7 @@ function rfidCallback(data)
     if (status >= 1) {
       openDoor();
     }
+    logAccess(cardID, status);
   })
 }
 

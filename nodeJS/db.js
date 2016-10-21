@@ -15,6 +15,12 @@ function init()
     'accessStatus'	INTEGER,
     PRIMARY KEY(cardID)
   );`);
+  db.run(`CREATE TABLE IF NOT EXISTS 'accessLog' (
+  	'accessID'	INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+  	'cardID'	INTEGER NOT NULL,
+  	'timestamp'	TEXT NOT NULL,
+  	'accessStatus'	INTEGER
+  );`);
 }
 
 function close()
@@ -72,6 +78,10 @@ function getName(cardID, callback)
   });
 }
 
+function logAccess(cardID, accessGranted) { //uses current time of function call to insert as timestamp
+  db.run("INSERT INTO accessLog (cardID, accessStatus, timestamp) VALUES (?, ?, datetime('now', 'localtime'))", [cardID, accessGranted]);
+}
 
 
-module.exports = {open, close, createAccess, getAccessStatus, setName, getName};
+
+module.exports = {open, close, createAccess, getAccessStatus, setName, getName, logAccess};
