@@ -26,19 +26,26 @@ function createAccess(cardID)
   })
 }
 
-function getAccessStatus(cardID, callback)
+function getCardInfo(cardID, callback)
 {
-  db.get("SELECT accessStatus FROM access WHERE cardID = ?", cardID, function(err, row){
+  db.get("SELECT cardID, name, accessStatus FROM access WHERE cardID = ?", cardID, function(err, row){
     if(err){
       console.log(err);
     }
     else {
-      if (row == undefined) {
-        callback(-1);
-      }
-      else {
-        callback(row.accessStatus);
-      }
+      callback(row);
+    }
+  });
+}
+
+function getAccessStatus(cardID, callback)
+{
+  getCardInfo(cardID, function(data){
+    if(data == undefined) { //if no row found
+      callback(-1); //return "not found" status code
+    }
+    else {
+      callback(data.accessStatus); //return access status code from database
     }
   });
 }
@@ -50,12 +57,12 @@ function setName(cardID, name)
 
 function getName(cardID, callback)
 {
-  db.get("SELECT name FROM access WHERE cardID = ?", cardID, function(err, row){
-    if(err){
-      console.log(err);
+  getCardInfo(cardID, function(data){
+    if(data == undefined) { //if no row found
+      callback(undefined); //return "not found"
     }
     else {
-      callback(row.name);
+      callback(data.name); //return access status code from database
     }
   });
 }
