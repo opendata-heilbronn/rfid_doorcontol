@@ -1,3 +1,4 @@
+var config = require('./config');
 var sqlite3 = require('sqlite3').verbose();
 var db;
 
@@ -78,10 +79,25 @@ function getName(cardID, callback)
   });
 }
 
-function logAccess(cardID, accessGranted) { //uses current time of function call to insert as timestamp
+function logAccess(cardID, accessGranted)  //uses current time of function call to insert as timestamp
+{
   db.run("INSERT INTO accessLog (cardID, accessStatus, timestamp) VALUES (?, ?, datetime('now', 'localtime'))", [cardID, accessGranted]);
 }
 
 
+function getAccessLog(callback, numResults)
+{
+  if(numResults == undefined) { //basically overload the function
+    db.all("SELECT * FROM accessLog", function(err, rows){
+      callback(rows);
+    });
+  }
+  else {
+    db.all("SELECT * FROM accessLog ORDER BY accessID DESC limit ?", numResults, function(err, rows){
+      callback(rows);
+    });
+  }
+}
 
-module.exports = {open, close, createAccess, getAccessStatus, setName, getName, logAccess};
+
+module.exports = {open, close, createAccess, getAccessStatus, setName, getName, logAccess, getAccessLog};

@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/opendata-heilbronn/rfid_doorcontol#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
     "nodeacr122u": "^1.0.0",
     "rpi-gpio": "^0.7.0",
     "sqlite3": "^3.1.6"
