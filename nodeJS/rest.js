@@ -19,7 +19,6 @@ const server = require('http').createServer(app).listen(3010);
 app.get('/api/accessLog', function(req, res){
   db.getAccessLog(function(accesses){
     res.send(accesses);
-    gpio.openDoor();
   });
 });
 
