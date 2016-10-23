@@ -13,6 +13,16 @@ var db = require('./db');
 var gpio = require('./gpio');
 var api = require('./rest');
 
+var log = console.log;
+
+console.log = function(){
+  //log(new Date.no)
+  log.apply(console, [new Date().toISOString()].concat("    " + arguments['0']));
+};
+
+console.log("Starting nodeJS RFID Doorcontrol");
+console.log("ATTENTION: Log Timestamp is in UTC (GMT+0)");
+
 //------------ RFID Reader init ------------//
 //reader.open(rfidCallback);
 
@@ -36,10 +46,11 @@ function rfidCallback(data)
   console.log("Detected Tag: " + data);
   //TODO data handling with real tags
   var cardID = data//.something
-  getAccessStatus(cardID, function(status){
+  gpio.openWithAuth(cardID);
+  /*getAccessStatus(cardID, function(status){
     if (status >= 1) {
       gpio.openDoor();
     }
     db.logAccess(cardID, status);
-  })
+  })*/
 }

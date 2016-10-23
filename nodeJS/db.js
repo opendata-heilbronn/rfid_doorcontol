@@ -20,7 +20,8 @@ function init()
   	'accessID'	INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
   	'cardID'	INTEGER NOT NULL,
   	'timestamp'	TEXT NOT NULL,
-  	'accessStatus'	INTEGER
+  	'accessStatus'	INTEGER,
+    'accessSource' TEXT
   );`);
 }
 
@@ -79,9 +80,11 @@ function getName(cardID, callback)
   });
 }
 
-function logAccess(cardID, accessGranted)  //uses current time of function call to insert as timestamp
+function logAccess(cardID, accessStatus, source)  //uses current time of function call to insert as timestamp
 {
-  db.run("INSERT INTO accessLog (cardID, accessStatus, timestamp) VALUES (?, ?, datetime('now', 'localtime'))", [cardID, accessGranted]);
+  if(source == undefined)
+    source = "";
+  db.run("INSERT INTO accessLog (cardID, accessStatus, accessSource, timestamp) VALUES (?, ?, ?, datetime('now', 'localtime'))", [cardID, accessStatus, source]);
 }
 
 
