@@ -1,9 +1,9 @@
-var config = require('./config');
-var db = require('./db');
-var gpio = require('rpi-gpio');
-var doorPin = config.gpio.doorPin; //pin of the door buzzer relay
-var buzzTime = config.gpio.buzzTime; //time for the door buzzer to open in ms
-var disableGPIO = config.gpio.disableGPIO; //disable all gpio calls (for developing purposes)
+const config = require('./config');
+const db = require('./db');
+const gpio = require('rpi-gpio');
+const doorPin = config.gpio.doorPin; //pin of the door buzzer relay
+const buzzTime = config.gpio.buzzTime; //time for the door buzzer to open in ms
+const disableGPIO = config.gpio.disableGPIO; //disable all gpio calls (for developing purposes)
 
 
 //------------ GPIO init ------------//

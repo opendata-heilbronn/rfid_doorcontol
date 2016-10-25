@@ -1,7 +1,7 @@
-var ACR122U = require('nodeacr122u');
+const ACR122U = require('nodeacr122u');
 
 
-var reader = ACR122U.create();
+const reader = ACR122U.create();
 
 
 function open(callback)

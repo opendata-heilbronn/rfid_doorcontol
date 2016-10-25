@@ -26,6 +26,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "nodeacr122u": "^1.0.0",
+    "play-sound": "^1.1.1",
     "rpi-gpio": "^0.7.0",
     "sqlite3": "^3.1.6"
   }

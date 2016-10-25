@@ -7,11 +7,12 @@ https://www.npmjs.com/package/sqlite3
 https://www.npmjs.com/package/rpi-gpio
 
 */
-var config = require('./config');
-var reader = require('./reader');
-var db = require('./db');
-var gpio = require('./gpio');
-var api = require('./rest');
+const config = require('./config');
+const reader = require('./reader');
+const db = require('./db');
+const gpio = require('./gpio');
+const api = require('./rest');
+const sound = require('./sound.js');
 
 var log = console.log;
 

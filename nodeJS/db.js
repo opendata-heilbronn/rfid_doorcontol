@@ -1,5 +1,5 @@
-var config = require('./config');
-var sqlite3 = require('sqlite3').verbose();
+const config = require('./config');
+const sqlite3 = require('sqlite3').verbose();
 var db;
 
 function open(path)

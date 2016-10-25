@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
-var db = require('./db');
-var gpio = require('./gpio');
+const db = require('./db');
+const gpio = require('./gpio');
 
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
