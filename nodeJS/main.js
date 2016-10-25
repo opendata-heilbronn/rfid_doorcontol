@@ -41,6 +41,10 @@ db.getName("asdf", function(name){
   console.log(name);
 })*/
 
+setTimeout(function () {
+  sound.playSoundFile('imperial_march')
+}, 10);
+
 
 function rfidCallback(data)
 {
