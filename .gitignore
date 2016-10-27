@@ -3,3 +3,4 @@ UID.sqlite
 rfid_keys.hpp
 
 node_modules
+*.o
